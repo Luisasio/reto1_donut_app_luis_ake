@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reto1_donut_app_luis_ake/pages/home_page.dart';
 
+
 void main() {
   runApp(const MainApp());
 }
@@ -10,8 +11,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return  MaterialApp(
+      home: const HomePage(),
+      theme: ThemeData(tabBarTheme: const TabBarTheme(indicatorColor: Colors.black)),
     );
   }
 }
