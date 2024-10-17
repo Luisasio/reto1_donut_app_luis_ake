@@ -4,6 +4,7 @@ import 'package:reto1_donut_app_luis_ake/pages/home_page.dart';
 
 void main() {
   runApp(const MainApp());
+  
 }
 
 class MainApp extends StatelessWidget {
@@ -12,8 +13,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
-      theme: ThemeData(tabBarTheme: const TabBarTheme(indicatorColor: Colors.black)),
+      theme: ThemeData(tabBarTheme: const TabBarTheme(indicatorColor: Color.fromARGB(255, 255, 46, 46))),
     );
   }
 }

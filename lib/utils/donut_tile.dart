@@ -68,6 +68,9 @@ class DonutTile extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 4, // Un espacio en blanco
+            ),
             // Texto "Dunkin's" debajo del sabor
             Padding(
               padding: const EdgeInsets.only(bottom: 12), // Opcionalmente agrega espacio extra si deseas
@@ -77,6 +80,29 @@ class DonutTile extends StatelessWidget {
                   fontSize: 16,
                   color: Colors.grey[600], // Un color gris para darle un toque secundario
                 ),
+              ),
+            ),
+            // Ícono de corazón y botón "Add"
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8), // Espacio a los lados
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Icon(
+                    Icons.favorite_border,
+                    size: 24,
+                    color: Colors.pink, // Color opcional
+                  ),
+                  Text(
+                    'Add',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: donutColor[800],
+                      decoration: TextDecoration.underline, // Subrayado en el texto
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
