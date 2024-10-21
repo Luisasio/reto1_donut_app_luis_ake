@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class DonutTile extends StatelessWidget {
-  final String donutFlavor;
-  final String donutPrice;
-  final dynamic donutColor;
+class BurgerTile extends StatelessWidget {
+  final String burgerFlavor;
+  final String burgerPrice;
+  final dynamic burgerColor; // dynamic porque será de tipo Color y también usará []
   final String imageName;
   final double borderRadius = 24;
-  final VoidCallback addToCart; // Callback para agregar al carrito
+  final VoidCallback addToCart;
 
-  const DonutTile({
+  const BurgerTile({
     super.key,
-    required this.donutFlavor,
-    required this.donutPrice,
-    this.donutColor,
+    required this.burgerFlavor,
+    required this.burgerPrice,
+    this.burgerColor,
     required this.imageName,
-    required this.addToCart, // Aceptar el callback en el constructor
+    required this.addToCart,
   });
 
   @override
@@ -24,18 +24,18 @@ class DonutTile extends StatelessWidget {
       child: Container(
         height: 250, // Ajusta la altura para evitar desbordamientos
         decoration: BoxDecoration(
-          color: donutColor[50],
+          color: burgerColor[50],
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: Column(
           children: [
-            // Donut price
+            // Burger price
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: donutColor[100],
+                    color: burgerColor[100],
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(borderRadius),
                       bottomLeft: Radius.circular(borderRadius),
@@ -43,37 +43,37 @@ class DonutTile extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
                   child: Text(
-                    '\$$donutPrice',
+                    '\$$burgerPrice',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: donutColor[800],
+                      color: burgerColor[800],
                     ),
                   ),
                 )
               ],
             ),
-            // Donut picture
+            // Burger picture
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                 child: Image.asset(imageName, fit: BoxFit.contain),
               ),
             ),
-            // Donut flavor text
+            // Burger name text
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 4),
               child: Text(
-                donutFlavor,
+                burgerFlavor,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
-                  color: donutColor[1000],
+                  color: burgerColor[1000],
                 ),
               ),
             ),
             const SizedBox(height: 4),
-            const Text('Dunkin\'s'),
+            const Text('Delicius Burger'),
             // Love icon + add button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),

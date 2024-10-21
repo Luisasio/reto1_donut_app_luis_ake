@@ -17,7 +17,9 @@ class DonutTab extends StatelessWidget {
     ["Choco", "95", Colors.brown,"lib/images/chocolate_donut.png"],
   ];
 
-  DonutTab({super.key});
+  final Function(double) addItem;
+
+  DonutTab({super.key, required this.addItem});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,9 @@ class DonutTab extends StatelessWidget {
         donutPrice: donutsOnSale[index][1],
         donutColor: donutsOnSale[index][2],
         imageName: donutsOnSale[index][3],
+        addToCart: () {
+            addItem(double.parse(donutsOnSale[index][1])); // Llama a la función addItem con el precio
+          },
       );
     });
   }

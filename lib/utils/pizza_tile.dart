@@ -1,20 +1,25 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-class DonutTile extends StatelessWidget {
-  final String donutFlavor;
-  final String donutPrice;
-  final dynamic donutColor;
+class PizzaTile extends StatelessWidget {
+  final String pizzaFlavor;
+  final String pizzaPrice;
+  final dynamic pizzaColor; // dynamic porque será de tipo Color y también usará []
   final String imageName;
+
   final double borderRadius = 24;
   final VoidCallback addToCart; // Callback para agregar al carrito
 
-  const DonutTile({
+
+  const PizzaTile({
     super.key,
-    required this.donutFlavor,
-    required this.donutPrice,
-    this.donutColor,
+    required this.pizzaFlavor,
+    required this.pizzaPrice,
+    this.pizzaColor,
     required this.imageName,
     required this.addToCart, // Aceptar el callback en el constructor
+
   });
 
   @override
@@ -24,18 +29,18 @@ class DonutTile extends StatelessWidget {
       child: Container(
         height: 250, // Ajusta la altura para evitar desbordamientos
         decoration: BoxDecoration(
-          color: donutColor[50],
+          color: pizzaColor[50],
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: Column(
           children: [
-            // Donut price
+            // Pizza price
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: donutColor[100],
+                    color: pizzaColor[100],
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(borderRadius),
                       bottomLeft: Radius.circular(borderRadius),
@@ -43,37 +48,37 @@ class DonutTile extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
                   child: Text(
-                    '\$$donutPrice',
+                    '\$$pizzaPrice',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: donutColor[800],
+                      color: pizzaColor[800],
                     ),
                   ),
                 )
               ],
             ),
-            // Donut picture
+            // Pizza picture
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                 child: Image.asset(imageName, fit: BoxFit.contain),
               ),
             ),
-            // Donut flavor text
+            // Pizza name text
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 4),
               child: Text(
-                donutFlavor,
+                pizzaFlavor,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
-                  color: donutColor[1000],
+                  color: pizzaColor[1000],
                 ),
               ),
             ),
             const SizedBox(height: 4),
-            const Text('Dunkin\'s'),
+            const Text('Pizza Place'),
             // Love icon + add button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),

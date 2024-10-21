@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
-class DonutTile extends StatelessWidget {
-  final String donutFlavor;
-  final String donutPrice;
-  final dynamic donutColor;
+class SmoothieTile extends StatelessWidget {
+  final String smoothieFlavor;
+  final String smoothiePrice;
+  final dynamic smoothieColor; // dynamic porque será de tipo Color y también usará []
   final String imageName;
-  final double borderRadius = 24;
-  final VoidCallback addToCart; // Callback para agregar al carrito
 
-  const DonutTile({
+  final double borderRadius = 24;
+  final VoidCallback addToCart;
+
+  const SmoothieTile({
     super.key,
-    required this.donutFlavor,
-    required this.donutPrice,
-    this.donutColor,
+    required this.smoothieFlavor,
+    required this.smoothiePrice,
+    this.smoothieColor,
     required this.imageName,
-    required this.addToCart, // Aceptar el callback en el constructor
+    required this.addToCart,
   });
 
   @override
@@ -24,56 +25,58 @@ class DonutTile extends StatelessWidget {
       child: Container(
         height: 250, // Ajusta la altura para evitar desbordamientos
         decoration: BoxDecoration(
-          color: donutColor[50],
+          color: smoothieColor[50],
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: Column(
           children: [
-            // Donut price
+            // Smoothie price
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: donutColor[100],
+                    color: smoothieColor[100],
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(borderRadius),
                       bottomLeft: Radius.circular(borderRadius),
                     ),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
                   child: Text(
-                    '\$$donutPrice',
+                    '\$$smoothiePrice',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: donutColor[800],
+                      color: smoothieColor[800],
                     ),
                   ),
                 )
               ],
             ),
-            // Donut picture
+            // Smoothie picture
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                 child: Image.asset(imageName, fit: BoxFit.contain),
               ),
             ),
-            // Donut flavor text
+            // Smoothie name text
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 4),
               child: Text(
-                donutFlavor,
+                smoothieFlavor,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
-                  color: donutColor[1000],
+                  color: smoothieColor[1000],
                 ),
               ),
             ),
             const SizedBox(height: 4),
-            const Text('Dunkin\'s'),
+            const Text('Smoothie Bar'),
             // Love icon + add button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -86,7 +89,8 @@ class DonutTile extends StatelessWidget {
                   ),
                   // Botón más pequeño alineado a la derecha
                   ElevatedButton(
-                    onPressed: addToCart, // Llama al callback al presionar el botón
+                    onPressed:
+                        addToCart, // Llama al callback al presionar el botón
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                         vertical: 8,
