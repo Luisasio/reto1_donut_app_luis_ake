@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reto1_donut_app_luis_ake/pages/login_page.dart'; // Asegúrate de importar tu LoginPage
 
 import '../tab/burger_tab.dart';
 import '../tab/donut_tab.dart';
@@ -16,32 +17,27 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // Lista de tabs
   List<Tab> myTabs = [
-    // Donut tab
     const Tab(
       icon: ImageIcon(AssetImage('lib/icons/donut.png')),
       text: 'Donuts', // Nombre del tab
     ),
-    // Burger tab
     const Tab(
       icon: ImageIcon(AssetImage('lib/icons/burger.png')),
       text: 'Burgers', // Nombre del tab
     ),
-    // Smoothie tab
     const Tab(
       icon: ImageIcon(AssetImage('lib/icons/smoothie.png')),
       text: 'Smoothies', // Nombre del tab
     ),
-    // Pancake tab
     const Tab(
       icon: ImageIcon(AssetImage('lib/icons/pancakes.png')),
       text: 'Pancakes', // Nombre del tab
     ),
-    // Pizza tab
     const Tab(
       icon: ImageIcon(AssetImage('lib/icons/pizza.png')),
       text: 'Pizzas', // Nombre del tab
-),
-];
+    ),
+  ];
 
   // Variables para controlar el número de items y el monto total
   int itemCount = 0;
@@ -74,10 +70,15 @@ class _HomePageState extends State<HomePage> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 24.0),
-              child: Icon(
-                Icons.person,
-                color: Colors.grey[800],
-                size: 36,
+              child: IconButton(
+                icon: Icon(Icons.person, color: Colors.grey[800], size: 36),
+                onPressed: () {
+                  // Acción para ir a la página de login
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
+                },
               ),
             ),
           ],
@@ -92,11 +93,13 @@ class _HomePageState extends State<HomePage> {
                     "I want to ",
                     style: TextStyle(fontSize: 32),
                   ),
-                  Text("EAT",
-                      style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline)),
+                  Text(
+                    "EAT",
+                    style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline),
+                  ),
                 ],
               ),
             ),
@@ -108,7 +111,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: TabBarView(
                 children: [
-                  DonutTab(addItem: addItem), // Pasar función a cada Tab
+                  DonutTab(addItem: addItem),
                   BurgerTab(addItem: addItem),
                   SmoothieTab(addItem: addItem),
                   PancakeTab(addItem: addItem),
@@ -174,13 +177,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    ),
-  );
 }

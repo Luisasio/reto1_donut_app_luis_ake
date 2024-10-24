@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:reto1_donut_app_luis_ake/pages/home_page.dart';
-
+import 'package:reto1_donut_app_luis_ake/pages/login_page.dart';
+import 'login_page.dart';  // Importa la página de login
 
 void main() {
   runApp(const MainApp());
-  
 }
 
 class MainApp extends StatelessWidget {
@@ -12,10 +12,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
-      theme: ThemeData(tabBarTheme: const TabBarTheme(indicatorColor: Color.fromARGB(255, 255, 46, 46))),
+      home: const LoginPage(),  // Cambia para mostrar primero la página de login
+      theme: ThemeData(
+        tabBarTheme: const TabBarTheme(indicatorColor: Color.fromARGB(255, 255, 46, 46)),
+      ),
     );
   }
 }
