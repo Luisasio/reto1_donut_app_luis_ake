@@ -1,31 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:reto1_donut_app_luis_ake/pages/home_page.dart';
-import 'package:reto1_donut_app_luis_ake/pages/registrarse.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+
+import 'package:flutter/material.dart';
+import 'package:reto1_donut_app_luis_ake/pages/login_page.dart';
+
+class Registrate extends StatefulWidget {
+  const Registrate({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _LoginPageState createState() => _LoginPageState();
+  State<Registrate> createState() => _RegistrateState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
-  void _login() {
-    if (_usernameController.text == 'user' && _passwordController.text == '123') {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Usuario o contraseña incorrectos')),
-      );
-    }
-  }
+class _RegistrateState extends State<Registrate> {
 
   @override
   Widget build(BuildContext context) {
@@ -48,24 +33,14 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 const Text(
-                  "Bienvenido,",
+                  "Registrate Ahora",
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                  "inicia sesión para continuar",
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 40),
-                Image.asset("lib/images/logo2.png", width: 210),
-                const SizedBox(height: 15),
+                const SizedBox(height: 15,),
                 Container(
                   padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
@@ -89,11 +64,10 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.grey.withOpacity(.2),
                         ),
                         child: TextFormField(
-                          controller: _usernameController,
                           decoration: const InputDecoration(
                             icon: Icon(Icons.person),
                             border: InputBorder.none,
-                            hintText: "Usuario",
+                            hintText: "Nombre",
                           ),
                         ),
                       ),
@@ -105,7 +79,37 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.grey.withOpacity(.2),
                         ),
                         child: TextFormField(
-                          controller: _passwordController,
+                          decoration: const InputDecoration(
+                            icon: Icon(Icons.email),
+                            border: InputBorder.none,
+                            hintText: "Correo",
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.grey.withOpacity(.2),
+                        ),
+                        child: TextFormField(
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            icon: Icon(Icons.lock),
+                            border: InputBorder.none,
+                            hintText: "Contraseña",
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.grey.withOpacity(.2),
+                        ),
+                        child: TextFormField(
                           obscureText: true,
                           decoration: const InputDecoration(
                             icon: Icon(Icons.lock),
@@ -116,7 +120,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: _login,
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.pink[400],
@@ -125,8 +128,9 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(90.0),
                           ),
                         ),
+                        onPressed: () {  },
                         child: const Text(
-                          'Iniciar sesión',
+                          'Registrarse',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -142,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "¿Aún no tienes una cuenta?",
+                      "Ya tienes cuenta?",
                       style: TextStyle(
                         fontSize: 17,
                         color: Colors.white,
@@ -152,11 +156,11 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const Registrate()),
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
                         );
                       },
                       child: const Text(
-                        "Regístrate",
+                        "Inicia Sesion",
                         style: TextStyle(
                           fontSize: 17,
                           color: Colors.white,

@@ -178,3 +178,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    ),
+  );
+}
